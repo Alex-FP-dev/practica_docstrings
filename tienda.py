@@ -7,4 +7,6 @@ def calcular_descuento(precio: float, porcentaje: float) -> float:
 def calcular_total(precios: list[float], iva: float = 21.0) -> float:
     return round(sum(precios) * (1 + iva / 100), 2)
 
-
+def prueba ():
+    pass
+    
