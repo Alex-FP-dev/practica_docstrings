@@ -12,6 +12,7 @@
 
 
 def calcular_media(notas):
+    
     if not notas:
         raise ValueError("La lista de notas no puede estar vacía")
     return round(sum(notas) / len(notas), 2)

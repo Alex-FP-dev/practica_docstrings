@@ -1,0 +1,10 @@
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+# Añade las reglas de docstrings (D) a las que Ruff ya trae por defecto
+extend-select = ["D"]
+
+[tool.ruff.lint.pydocstyle]
+# Usa las normas de la guía de estilo de Google
+convention = "google"

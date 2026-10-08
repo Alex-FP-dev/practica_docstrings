@@ -1,0 +1,7 @@
+{
+    "autoDocstring.docstringFormat": "google-notypes",
+    "python.analysis.typeCheckingMode": "basic",
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    }
+}
