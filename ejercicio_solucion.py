@@ -11,7 +11,6 @@ Example:
 """
 
 from collections.abc import Sequence
-from typing import Optional
 
 
 def calcular_media(notas: Sequence[float]) -> float:
@@ -100,7 +99,7 @@ class Alumno:
         8.0
     """
 
-    def __init__(self, nombre: str, notas: Optional[Sequence[float]] = None) -> None:
+    def __init__(self, nombre: str, notas: Sequence[float] | None = None) -> None:
         """Crea un alumno.
 
         Args:
@@ -175,7 +174,7 @@ class Aula:
         """
         self.alumnos.append(alumno)
 
-    def buscar_alumno(self, nombre: str) -> Optional[Alumno]:
+    def buscar_alumno(self, nombre: str) -> Alumno | None:
         """Busca un alumno por su nombre, sin distinguir mayúsculas.
 
         Args:
@@ -197,7 +196,7 @@ class Aula:
                 return alumno
         return None
 
-    def mejor_alumno(self) -> Optional[Alumno]:
+    def mejor_alumno(self) -> Alumno | None:
         """Obtiene el alumno con mejor nota media.
 
         Returns:
