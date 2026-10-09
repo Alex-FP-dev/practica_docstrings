@@ -1,9 +1,17 @@
 site_name: Práctica de docstrings
 site_description: Documentación generada automáticamente desde los docstrings
 
+# Enlaces tipo "referencia.html" en vez de "referencia/": permite abrir
+# la web directamente desde el explorador de archivos (file://)
+use_directory_urls: false
+
 theme:
   name: material
   language: es
+
+# Vigila también el código para recargar al cambiar un docstring
+watch:
+  - .
 
 plugins:
   - search
