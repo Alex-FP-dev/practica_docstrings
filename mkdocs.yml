@@ -1,0 +1,23 @@
+site_name: Práctica de docstrings
+site_description: Documentación generada automáticamente desde los docstrings
+
+theme:
+  name: material
+  language: es
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [.]
+          options:
+            docstring_style: google
+            show_source: true
+            show_root_heading: true
+            members_order: source
+            show_signature_annotations: true
+
+nav:
+  - Inicio: index.md
+  - Referencia: referencia.md
