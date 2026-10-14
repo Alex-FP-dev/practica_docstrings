@@ -1,0 +1,63 @@
+name: Calidad y documentación
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  calidad:
+    name: Revisar y construir
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v5
+
+      - name: Preparar Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt ruff
+
+      - name: Revisar documentación con Ruff
+        run: ruff check ejercicio_solucion.py main.py
+
+      - name: Ejecutar los ejemplos de los docstrings
+        run: python -m doctest ejercicio_solucion.py
+
+      - name: Construir la web (falla si hay avisos)
+        run: mkdocs build --strict
+
+      - name: Subir la web generada
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  publicar:
+    name: Publicar en GitHub Pages
+    needs: calidad
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Desplegar
+        id: deployment
+        uses: actions/deploy-pages@v5

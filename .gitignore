@@ -11,3 +11,6 @@ __pycache__/
 
 # archivos del MKdocs
 site/
+
+# Resultados generados
+.ruff_cache/
