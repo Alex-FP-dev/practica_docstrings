@@ -26,6 +26,15 @@ plugins:
             members_order: source
             show_signature_annotations: true
 
+# Permite dibujar diagramas Mermaid dentro de bloques ```mermaid
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
 nav:
   - Inicio: index.md
   - Referencia: referencia.md
+  - Diagramas: diagramas.md
