@@ -26,10 +26,13 @@ jobs:
           cache-dependency-path: requirements.txt
 
       - name: Instalar dependencias
-        run: pip install -r requirements.txt ruff
+        run: pip install -r requirements.txt ruff interrogate
 
       - name: Revisar documentación con Ruff
         run: ruff check ejercicio_solucion.py main.py
+
+      - name: Medir la cobertura de docstrings
+        run: interrogate -c pyproject.toml ejercicio_solucion.py main.py
 
       - name: Ejecutar los ejemplos de los docstrings
         run: python -m doctest ejercicio_solucion.py

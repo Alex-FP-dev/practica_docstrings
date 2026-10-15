@@ -9,3 +9,9 @@ extend-select = ["D"]
 [tool.ruff.lint.pydocstyle]
 # Usa las normas de la guía de estilo de Google
 convention = "google"
+
+[tool.interrogate]
+# Porcentaje mínimo de elementos con docstring; por debajo, el comando falla
+fail-under = 100
+# Muestra una tabla con el resumen por archivo
+verbose = 1
