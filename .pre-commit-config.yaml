@@ -1,0 +1,18 @@
+repos:
+  # Revisión de estilo y documentación con Ruff (usa la configuración de pyproject.toml)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.22
+    hooks:
+      - id: ruff-check
+        # ejercicio.py está sin documentar a propósito (es el ejercicio de los alumnos)
+        exclude: ^ejercicio\.py$
+
+  # Ejecuta los ejemplos de los docstrings antes de cada commit
+  - repo: local
+    hooks:
+      - id: doctest
+        name: doctest
+        entry: python -m doctest ejercicio_solucion.py
+        language: system
+        pass_filenames: false
+        files: ^ejercicio_solucion\.py$
